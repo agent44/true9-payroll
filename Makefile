@@ -6,3 +6,8 @@ phpcs_check:
 
 phpcs_fix:
 	vendor/bin/php-cs-fixer fix -vvv
+
+test:
+	bin/phpunit
+
+qa: phpcs_check phpstan test
