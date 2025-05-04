@@ -2,11 +2,11 @@
 
 namespace App\Tests\Service;
 
-use App\Service\PayrollDate;
+use App\Service\PayrollDatesCalculator;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
-class PayrollDateTest extends TestCase
+class PayrollDatesCalculatorTest extends TestCase
 {
     public static function calculatePayDatesProvider(): array
     {
@@ -27,7 +27,7 @@ class PayrollDateTest extends TestCase
     #[DataProvider('calculatePayDatesProvider')]
     public function testCalculatePayDates(int $year, int $month, array $expectedResult): void
     {
-        $payrollDate = new PayrollDate();
+        $payrollDate = new PayrollDatesCalculator();
         $result = $payrollDate->calculatePayDates($year, $month);
         dump($expectedResult, $result);
         $this->assertEquals($expectedResult, $result);
