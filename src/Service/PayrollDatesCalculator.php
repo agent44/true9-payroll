@@ -25,8 +25,8 @@ class PayrollDatesCalculator
         }
 
         return [
-            'payday' => $payday->toDateString(),
-            'payment_date' => $paymentDate->toDateString(),
+            'payday' => $payday->toFormattedDayDateString(),
+            'payment_date' => $paymentDate->toFormattedDayDateString(),
         ];
     }
 }
