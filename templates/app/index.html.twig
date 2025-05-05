@@ -3,7 +3,27 @@
 {% block title %}Hello AppController!{% endblock %}
 
 {% block body %}
-<h1>Payroll Calculator</h1>
-    <div {{ stimulus_controller('hello') }}>
+    <div class="bg-white/90 backdrop-blur-md rounded-3xl shadow-2xl p-10 text-center">
+
+        <h1 class="text-3xl font-bold mb-4">Payroll Dates Calculator</h1>
+        <p class="text-gray-700 ">Enter a month and a year to calculate the payday for that month and the date payment needs to be sent.</p>
+
+        <form class="space-y-6 mt-6">
+            <div>
+                <label for="month" class="block text-left text-gray-700 mb-1 font-medium">Month</label>
+                <select id="month" name="option1" class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-cyan-400">
+
+                </select>
+            </div>
+            <div>
+                <label for="year" class="block text-left text-gray-700 mb-1 font-medium">Year</label>
+                <select id="year" name="option2" class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-cyan-400">
+
+                </select>
+            </div>
+            <button type="submit" class="w-full bg-cyan-500 hover:bg-cyan-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition duration-200">
+                Calculate
+            </button>
+        </form>
     </div>
 {% endblock %}
