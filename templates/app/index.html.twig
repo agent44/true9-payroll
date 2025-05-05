@@ -3,27 +3,49 @@
 {% block title %}Hello AppController!{% endblock %}
 
 {% block body %}
-    <div class="bg-white/90 backdrop-blur-md rounded-3xl shadow-2xl p-10 text-center">
+    <div class="bg-white/90 backdrop-blur-md rounded-3xl shadow-2xl p-10 text-center" {{ stimulus_controller('payroll-calculator') }}>
 
         <h1 class="text-3xl font-bold mb-4">Payroll Dates Calculator</h1>
         <p class="text-gray-700 ">Enter a month and a year to calculate the payday for that month and the date payment needs to be sent.</p>
 
         <form class="space-y-6 mt-6">
             <div>
-                <label for="month" class="block text-left text-gray-700 mb-1 font-medium">Month</label>
-                <select id="month" name="option1" class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-cyan-400">
+                <label for="months" class="block text-left text-gray-700 mb-1 font-medium">Month</label>
+                <select
+                    id="months"
+                    name="months"
+                    class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                    data-payroll-calculator-target="months"
+                >
 
                 </select>
             </div>
             <div>
-                <label for="year" class="block text-left text-gray-700 mb-1 font-medium">Year</label>
-                <select id="year" name="option2" class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-cyan-400">
+                <label for="years" class="block text-left text-gray-700 mb-1 font-medium">Year</label>
+                <select
+                    id="years"
+                    name="months"
+                    class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                    data-payroll-calculator-target="years"
+                >
 
                 </select>
             </div>
-            <button type="submit" class="w-full bg-cyan-500 hover:bg-cyan-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition duration-200">
+
+            <button
+                class="w-full bg-cyan-500 hover:bg-cyan-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition duration-200"
+                data-action="click->payroll-calculator#calculate"
+            >
                 Calculate
             </button>
+
         </form>
+
+        <div
+            id="results"
+            data-payroll-calculator-target="results"
+            class="mt-8 p-6 bg-white rounded-2xl shadow-lg text-left text-gray-800 hidden"
+        ></div>
     </div>
+
 {% endblock %}
