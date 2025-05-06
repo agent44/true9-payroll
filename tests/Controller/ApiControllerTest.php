@@ -11,11 +11,7 @@ final class ApiControllerTest extends WebTestCase
     use ApiDataProvider;
 
     /**
-     * @param int $year
-     * @param int $month
      * @param array<string, string> $expectedResult
-     *
-     * @return void
      */
     #[DataProvider('calculatePayrollDatesProvider')]
     public function testPayrollDates(int $year, int $month, array $expectedResult): void

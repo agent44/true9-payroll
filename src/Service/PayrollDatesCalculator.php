@@ -7,9 +7,6 @@ use Carbon\Carbon;
 class PayrollDatesCalculator
 {
     /**
-     * @param int|string $year
-     * @param int|string $month
-     *
      * @return array<int|string, int|string>
      */
     public function calculatePayDates(int|string $year, int|string $month): array
