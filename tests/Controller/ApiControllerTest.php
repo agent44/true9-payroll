@@ -22,7 +22,7 @@ final class ApiControllerTest extends WebTestCase
             self::assertSame($expectedResult, $response->getContent());
             self::assertResponseStatusCodeSame(200);
             self::assertResponseHeaderSame('Content-type', 'application/json');
-        } else if (!is_numeric($month) || !is_numeric($year)) {
+        } elseif (!is_numeric($month) || !is_numeric($year)) {
             self::assertResponseIsUnprocessable();
             self::assertResponseStatusCodeSame(422);
             self::assertResponseHeaderSame('Content-type', 'text/html; charset=UTF-8');
@@ -31,20 +31,21 @@ final class ApiControllerTest extends WebTestCase
             self::assertResponseStatusCodeSame(422);
             self::assertResponseHeaderSame('Content-type', 'text/html; charset=UTF-8');
         }
-
     }
 
-    public static function invalidPayrollDatesProvider(): array {
+    public static function invalidPayrollDatesProvider(): array
+    {
         return [
             ['bhst', 'ab'],
             ['0000', '00'],
             ['hjdqwhdoihqo', '09987654'],
-            ['*(', '////()']
+            ['*(', '////()'],
         ];
     }
 
     #[DataProvider('invalidPayrollDatesProvider')]
-    public function testInvalidPayrollDates(string $year, string $month): void {
+    public function testInvalidPayrollDates(string $year, string $month): void
+    {
         $this->sendRequest($year, $month);
         self::assertResponseIsUnprocessable();
         self::assertResponseStatusCodeSame(422);

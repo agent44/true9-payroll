@@ -28,6 +28,7 @@ final class ApiController extends AbstractController
                 'json'
             )
         );
+
         return $response;
     }
 }
