@@ -4,6 +4,9 @@ namespace App\Tests;
 
 trait ApiDataProvider
 {
+    /**
+     * @return array<mixed>
+     */
     public static function calculatePayrollDatesProvider(): array
     {
         return [

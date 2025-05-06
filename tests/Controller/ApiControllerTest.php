@@ -10,6 +10,13 @@ final class ApiControllerTest extends WebTestCase
 {
     use ApiDataProvider;
 
+    /**
+     * @param int $year
+     * @param int $month
+     * @param array<string, string> $expectedResult
+     *
+     * @return void
+     */
     #[DataProvider('calculatePayrollDatesProvider')]
     public function testPayrollDates(int $year, int $month, array $expectedResult): void
     {
@@ -22,10 +29,6 @@ final class ApiControllerTest extends WebTestCase
             self::assertSame($expectedResult, $response->getContent());
             self::assertResponseStatusCodeSame(200);
             self::assertResponseHeaderSame('Content-type', 'application/json');
-        } elseif (!is_numeric($month) || !is_numeric($year)) {
-            self::assertResponseIsUnprocessable();
-            self::assertResponseStatusCodeSame(422);
-            self::assertResponseHeaderSame('Content-type', 'text/html; charset=UTF-8');
         } else {
             self::assertResponseIsUnprocessable();
             self::assertResponseStatusCodeSame(422);
@@ -33,6 +36,9 @@ final class ApiControllerTest extends WebTestCase
         }
     }
 
+    /**
+     * @return array<int, list<string>>
+     */
     public static function invalidPayrollDatesProvider(): array
     {
         return [
@@ -52,7 +58,7 @@ final class ApiControllerTest extends WebTestCase
         self::assertResponseHeaderSame('Content-type', 'text/html; charset=UTF-8');
     }
 
-    private function sendRequest(string|int $year, string|int $month)
+    private function sendRequest(string|int $year, string|int $month): object
     {
         $payload = json_encode(['year' => $year, 'month' => $month]);
         $client = self::createClient();

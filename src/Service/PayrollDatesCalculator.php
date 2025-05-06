@@ -6,6 +6,12 @@ use Carbon\Carbon;
 
 class PayrollDatesCalculator
 {
+    /**
+     * @param int|string $year
+     * @param int|string $month
+     *
+     * @return array<int|string, int|string>
+     */
     public function calculatePayDates(int|string $year, int|string $month): array
     {
         $payday = Carbon::createFromDate($year, $month, 1)->endOfMonth()->subDays(1);
