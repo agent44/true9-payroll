@@ -29,22 +29,5 @@ final class AppControllerTest extends WebTestCase
 
         $isHidden = $resultsPanel->filterXPath('//div[contains(@class, "hidden")]');
         self::assertCount(1, $isHidden);
-
-//        $submittedCrawler = $client->submitForm('calculate');
-//
-//        // Check main elements of the page are present
-//        $selects = $submittedCrawler->filterXPath('//select');
-//        self::assertCount(2, $selects);
-//
-//        $button = $submittedCrawler->filterXPath('//button');
-//        self::assertCount(1, $button);
-//
-//        $resultsPanel = $submittedCrawler->filterXPath('//div[contains(@id, "results")]');
-//        self::assertCount(1, $resultsPanel);
-//
-//        dump($resultsPanel->outerHtml());
-//
-//        $isHidden = $submittedCrawler->filterXPath('//div[contains(@class, "hidden")]');
-//        self::assertCount(0, $isHidden);
     }
 }
