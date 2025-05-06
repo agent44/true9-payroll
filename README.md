@@ -11,10 +11,11 @@ A docker environment is provided to run the app that utilises the Symfony dev se
 
 ## Installation
 
-Prerequisites: 
+### Prerequisites: 
 - PHP & Composer, see https://getcomposer.org/doc/00-intro.md#system-requirements
 - Docker https://docs.docker.com/desktop/
 
+### Installation:
 - If you haven't already, clone this repository:
   - `git clone git@github.com:agent44/true9-payroll.git`
 - Navigate to the root of the project:
@@ -25,10 +26,6 @@ Prerequisites:
   - `docker build -t chrisshennan/symfony-cli .`
 - Start the docker container
   - `docker run -it -p 8000:8000 -v "$(pwd):/app" chrisshennan/symfony-cli local:server:start --dir=/app --port=8000 --no-tls --allow-all-ip`
-- In a new terminal window run:
-  - `docker ps`
-- Copy the container ID and run the following to access a terminal on the docker container:
-  - `docker exec -it <<id>> sh`
 - You can now access the app at http://127.0.0.1:8000
 
 ## QA
